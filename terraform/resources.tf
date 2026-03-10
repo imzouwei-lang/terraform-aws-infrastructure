@@ -9,3 +9,14 @@ resource "aws_s3_bucket" "test" {
     Environment = var.environment
   }
 }
+
+# New S3 bucket for data storage
+resource "aws_s3_bucket" "data_storage" {
+  bucket = "data-storage-${data.aws_caller_identity.current.account_id}"
+  
+  tags = {
+    Name        = "Data Storage Bucket"
+    Environment = var.environment
+    Purpose     = "Data Storage"
+  }
+}
