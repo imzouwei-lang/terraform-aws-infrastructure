@@ -5,10 +5,11 @@ on:
     branches: [main]
     paths:
       - 'terraform/**'
+      - '.github/workflows/**'
   push:
-    branches: [main]
     paths:
       - 'terraform/**'
+      - '.github/workflows/**'
 
 permissions:
   id-token: write
