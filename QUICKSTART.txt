@@ -1,0 +1,44 @@
+╔═══════════════════════════════════════════════════════════╗
+║           快速启动 - imzouwei-lang                         ║
+╚═══════════════════════════════════════════════════════════╝
+
+第1步：创建GitHub仓库
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+访问: https://github.com/new
+仓库名: terraform-aws-infrastructure
+设为Private，不添加README
+
+
+第2步：推送代码
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+bash /tmp/github-terraform-setup/push-to-github.sh
+
+需要GitHub Token: https://github.com/settings/tokens/new
+权限: repo (Full control)
+
+
+第3步：配置Approval
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+访问: https://github.com/imzouwei-lang/terraform-aws-infrastructure/settings/environments
+
+New environment → production
+☑ Required reviewers → imzouwei-lang
+☑ Deployment branches → main
+Save
+
+
+第4步：测试
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+cd /tmp/github-terraform-setup
+git checkout -b test
+sed -i 's/count      = 0/count      = 1/' terraform/resources.tf
+git add . && git commit -m "test" && git push origin test
+
+在GitHub创建PR → 查看Plan → 合并 → 批准部署
+
+
+✅ 完成！
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+IAM Role已限制只能被你的仓库使用
+所有AWS资源已就绪
+开始使用Terraform管理AWS基础设施吧！
