@@ -41,6 +41,8 @@ resource "aws_instance" "web_server" {
   key_name               = "6877-ues-east-1"
 
   tags = {
-    Name = "terraform-ec2-instance"
+    Name        = "terraform-ec2-instance"
+    Owner       = "imzouwei-lang"
+    Application = "WebServer"
   }
 }
