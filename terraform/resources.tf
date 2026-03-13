@@ -35,7 +35,7 @@ data "aws_ami" "amazon_linux_2023" {
 # EC2 Instance
 resource "aws_instance" "web_server" {
   ami                    = data.aws_ami.amazon_linux_2023.id
-  instance_type          = "t2.medium"
+  instance_type          = "t3.medium"
   subnet_id              = "subnet-0edc9c21510e8e9fe"
   vpc_security_group_ids = ["sg-0186c9147e25512ff"]
   key_name               = "6877-ues-east-1"
