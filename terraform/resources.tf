@@ -21,6 +21,17 @@ resource "aws_s3_bucket" "data_storage" {
   }
 }
 
+# S3 bucket for application assets
+resource "aws_s3_bucket" "app_assets" {
+  bucket = "app-assets-${data.aws_caller_identity.current.account_id}"
+
+  tags = {
+    Name        = "App Assets Bucket"
+    Environment = var.environment
+    Purpose     = "Application Assets"
+  }
+}
+
 # Get latest Amazon Linux 2023 AMI
 data "aws_ami" "amazon_linux_2023" {
   most_recent = true

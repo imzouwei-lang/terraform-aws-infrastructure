@@ -22,3 +22,13 @@ output "ec2_instance_public_ip" {
   description = "EC2 Instance Public IP"
   value       = aws_instance.web_server.public_ip
 }
+
+output "app_assets_bucket_name" {
+  description = "App Assets S3 Bucket Name"
+  value       = aws_s3_bucket.app_assets.id
+}
+
+output "app_assets_bucket_arn" {
+  description = "App Assets S3 Bucket ARN"
+  value       = aws_s3_bucket.app_assets.arn
+}
